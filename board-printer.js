@@ -17,8 +17,9 @@
 */
 export function printBoard(board) {
     for(let i=0; i< board.length; i++){
-        console.log(`  ${board[i][0]}  |  ${board[i][1]}  |  ${board[i][2]}  `);
-        if(i< board.length-1){
+        let row = board[i].map(cell => cell === '_' ? ' ' : cell).join('  |  ');
+        console.log(`  ${row}`);
+        if(i < board.length-1){
             console.log('===============================');
         }
     }
@@ -37,3 +38,8 @@ export function checkIfNoMovesLeft(board) {
     }
     return true;
 }
+
+module.exports = {
+    printBoard,
+    checkIfNoMovesLeft
+};
