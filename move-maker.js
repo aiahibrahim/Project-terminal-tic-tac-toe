@@ -17,6 +17,20 @@
 */
 function validateMove(move, board) {
     // Implement this at the end if you have time, otherwise you can help your teammates!
+    let [row, col]= makeMove.split(',').map(Number);
+    //to check if row and column are within valid range(1 to 3)
+    if(row<1 || row>3 || col<1 || col>3){
+        console.log('Try again...');
+        return false;
+    }
+    //to adjust index to match array
+    row -= 1;
+    col -= 1;
+    // Check if the selected cell is empty ('_')
+    if (board[row][col] !== '_') {
+        console.log('Try again...');
+        return false;
+    }
     return true;
 }
 
@@ -32,5 +46,12 @@ function validateMove(move, board) {
             - Return true
 */
 export function makeMove(board, move, player) {
+    if(!validateMove(move, board)){
     return false;
+    }
+    let [row, col] = move.split(',').map(Number);
+    board[row - 1][col - 1] = player; // Adjust index for 0-based array
+
+    return true;
 }
+
